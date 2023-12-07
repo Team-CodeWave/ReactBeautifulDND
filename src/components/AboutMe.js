@@ -82,152 +82,268 @@ const AboutMe = forwardRef( (props, ref)=>{
   
   return(
     <>
-    <div className="wrapper">
-      <button className="aboutme-save-btn" onClick={()=>{saveText()}}>저장</button>
-      <div className="uploadImage-btn-container">
-        <input ref={inputRef1} className="uploadImage-input" type="file"id="image_uploads"name="image_uploads"accept=".jpg, .jpeg, .png" onChange={(e)=>{uploadImage(e,"r1")}}/>
-      </div>
-      <div className="uploadImage-btn-container">
-        <input ref={inputRef2} className="uploadImage-input" type="file"id="image_uploads"name="image_uploads"accept=".jpg, .jpeg, .png" onChange={(e)=>{uploadImage(e,"r2")}}/>
-      </div>
-      <div className="uploadImage-btn-container">
-        <input ref={inputRef3} className="uploadImage-input" type="file"id="image_uploads"name="image_uploads"accept=".jpg, .jpeg, .png" onChange={(e)=>{uploadImage(e,"r3")}}/>
-      </div>
-      <div className="uploadImage-btn-container">
-        <input ref={inputRef4} className="uploadImage-input" type="file"id="image_uploads"name="image_uploads"accept=".jpg, .jpeg, .png" onChange={(e)=>{uploadImage(e,"r4")}}/>
-      </div>
-      <div className="uploadImage-btn-container">
-        <input ref={inputRef5} className="uploadImage-input" type="file"id="image_uploads"name="image_uploads"accept=".jpg, .jpeg, .png" onChange={(e)=>{uploadImage(e,"r5")}}/>
-      </div>
-      <div className="uploadImage-btn-container">
-        <input ref={inputRef6} className="uploadImage-input" type="file"id="image_uploads"name="image_uploads"accept=".jpg, .jpeg, .png" onChange={(e)=>{uploadImage(e,"r6")}}/>
-      </div>
+    {
+      props.result ?
 
+      <div className="wrapper aboutme-result">
+        <div className="aboutme-container">
+          <div className="aboutme-title">
+            <div className="aboutme-text-title resultDiv">{dataState.tt1}</div>
+          </div>
+          <div className="aboutme-content-container">
+            <div className="aboutme-content-item">
+              <div ref={inputBtnRef1} className="aboutme-image-upload-Btn resultP">
+                <div>
+                  {
+                    dataState.r1?
+                    <img className="image" src={dataState.r1} ref={ref}/>
+                    :
+                    null
+                  }
+                </div>
+              </div>
+              <div className="aboutme-text-container">
+                <div className="aboutme-text-title resultDiv">{dataState.t1}</div>
+                <div className="aboutme-text resultDiv">{dataState.c1}</div>
+              </div>
+            </div>
+            <div className="aboutme-content-item">
+              <div ref={inputBtnRef2} className="aboutme-image-upload-Btn resultP resultP">
+                <div>
+                  {
+                    dataState.r2?
+                    <img className="image" src={dataState.r2} ref={ref}/>
+                    :
+                    null
+                  }
+                </div>
+              </div>
+              <div className="aboutme-text-container">
+                <div className="aboutme-text-title resultDiv">{dataState.t2}</div>
+                <div className="aboutme-text resultDiv">{dataState.c2}</div>
+              </div>
+            </div>
+            <div className="aboutme-content-item">
+              <div ref={inputBtnRef3} className="aboutme-image-upload-Btn resultP">
+                <div>
+                  {
+                    dataState.r3?
+                    <img className="image" src={dataState.r3} ref={ref}/>
+                    :
+                    null
+                  }
+                </div>
+              </div>
+              <div className="aboutme-text-container">
+                <div className="aboutme-text-title resultDiv">{dataState.t3}</div>
+                <div className="aboutme-text resultDiv">{dataState.c3}</div>
+              </div>
+            </div>
+            <div className="aboutme-content-item">
+              <div ref={inputBtnRef4} className="aboutme-image-upload-Btn resultP">
+                <div>
+                  {
+                    dataState.r4?
+                    <img className="image" src={dataState.r4} ref={ref}/>
+                    :
+                    null
+                  }
+                </div>
+              </div>
+              <div className="aboutme-text-container">
+                <div className="aboutme-text-title resultDiv">{dataState.t4}</div>
+                <div className="aboutme-text resultDiv">{dataState.c4}</div>
+              </div>
+            </div>
+            <div className="aboutme-content-item">
+              <div ref={inputBtnRef5} className="aboutme-image-upload-Btn resultP">
+                <div>
+                  {
+                    dataState.r5?
+                    <img className="image" src={dataState.r5} ref={ref}/>
+                    :
+                    null
+                  }
+                </div>
+              </div>
+              <div className="aboutme-text-container">
+                <div className="aboutme-text-title resultDiv">{dataState.t5}</div>
+                <div className="aboutme-text resultDiv">{dataState.c5}</div>
+              </div>
+            </div>
+            <div className="aboutme-content-item">
+              <div ref={inputBtnRef6} className="aboutme-image-upload-Btn resultP">
+                <div>
+                  {
+                    dataState.r6?
+                    <img className="image" src={dataState.r6} ref={ref}/>
+                    :
+                    null
+                  }
+                </div>
+              </div>
+              <div className="aboutme-text-container">
+                <div className="aboutme-text-title resultDiv">{dataState.t6}</div>
+                <div className="aboutme-text resultDiv">{dataState.c6}</div>
+              </div>
+            </div>
 
-      <div className="aboutme-container">
-        <div className="aboutme-title">
-        <textarea onChange={(e)=>{setDataState({...dataState, tt1:e.target.value});}} value={dataState.tt1} placeholder="제목" rows="1" className="aboutme-text-title" maxLength="25"></textarea>
+          </div>
         </div>
-        <div className="aboutme-content-container">
-          <div className="aboutme-content-item">
-            <div ref={inputBtnRef1} className="aboutme-image-upload-Btn" onClick={()=>{
-              inputRef1.current.click()
-            }}>
-              <CiCirclePlus />
-              <div>
-                {
-                  dataState.r1?
-                  <img className="image" src={dataState.r1} ref={ref}/>
-                  :
-                  null
-                }
-              </div>
-            </div>
-            <div className="aboutme-text-container">
-              <textarea onChange={(e)=>{setDataState({...dataState, t1:e.target.value});}} value={dataState.t1} placeholder="제목" rows="1" className="aboutme-text-title" maxLength="15"></textarea>
-              <textarea onInput={(e)=>{setDataState({...dataState, c1:e.target.value})}} value={dataState.c1} placeholder="내용" rows="1" className="aboutme-text" maxLength="30"></textarea>
-            </div>
-          </div>
-          <div className="aboutme-content-item">
-            <div ref={inputBtnRef2} className="aboutme-image-upload-Btn" onClick={()=>{
-              inputRef2.current.click()
-            }}>
-              <CiCirclePlus />
-              <div>
-                {
-                  dataState.r2?
-                  <img className="image" src={dataState.r2} ref={ref}/>
-                  :
-                  null
-                }
-              </div>
-            </div>
-            <div className="aboutme-text-container">
-              <textarea onInput={(e)=>{setDataState({...dataState, t2:e.target.value})}} value={dataState.t2} placeholder="제목" rows="1" className="aboutme-text-title" maxLength="15"></textarea>
-              <textarea onInput={(e)=>{setDataState({...dataState, c2:e.target.value})}} value={dataState.c2} placeholder="내용" rows="1" className="aboutme-text" maxLength="30"></textarea>
-            </div>
-          </div>
-          <div className="aboutme-content-item">
-            <div ref={inputBtnRef3} className="aboutme-image-upload-Btn" onClick={()=>{
-              inputRef3.current.click()
-            }}>
-              <CiCirclePlus />
-              <div>
-                {
-                  dataState.r3?
-                  <img className="image" src={dataState.r3} ref={ref}/>
-                  :
-                  null
-                }
-              </div>
-            </div>
-            <div className="aboutme-text-container">
-              <textarea onInput={(e)=>{setDataState({...dataState, t3:e.target.value})}} value={dataState.t3} placeholder="제목" rows="1" className="aboutme-text-title" maxLength="15"></textarea>
-              <textarea onInput={(e)=>{setDataState({...dataState, c3:e.target.value})}} value={dataState.c3} placeholder="내용" rows="1" className="aboutme-text" maxLength="30"></textarea>
-            </div>
-          </div>
-          <div className="aboutme-content-item">
-            <div ref={inputBtnRef4} className="aboutme-image-upload-Btn" onClick={()=>{
-              inputRef4.current.click()
-            }}>
-              <CiCirclePlus />
-              <div>
-                {
-                  dataState.r4?
-                  <img className="image" src={dataState.r4} ref={ref}/>
-                  :
-                  null
-                }
-              </div>
-            </div>
-            <div className="aboutme-text-container">
-              <textarea onInput={(e)=>{setDataState({...dataState, t4:e.target.value})}} value={dataState.t4} placeholder="제목" rows="1" className="aboutme-text-title" maxLength="15"></textarea>
-              <textarea onInput={(e)=>{setDataState({...dataState, c4:e.target.value})}} value={dataState.c4} placeholder="내용" rows="1" className="aboutme-text" maxLength="30"></textarea>
-            </div>
-          </div>
-          <div className="aboutme-content-item">
-            <div ref={inputBtnRef5} className="aboutme-image-upload-Btn" onClick={()=>{
-              inputRef5.current.click()
-            }}>
-              <CiCirclePlus />
-              <div>
-                {
-                  dataState.r5?
-                  <img className="image" src={dataState.r5} ref={ref}/>
-                  :
-                  null
-                }
-              </div>
-            </div>
-            <div className="aboutme-text-container">
-              <textarea onInput={(e)=>{setDataState({...dataState, t5:e.target.value})}} value={dataState.t5} placeholder="제목" rows="1" className="aboutme-text-title" maxLength="15"></textarea>
-              <textarea onInput={(e)=>{setDataState({...dataState, c5:e.target.value})}} value={dataState.c5} placeholder="내용" rows="1" className="aboutme-text" maxLength="30"></textarea>
-            </div>
-          </div>
-          <div className="aboutme-content-item">
-            <div ref={inputBtnRef6} className="aboutme-image-upload-Btn" onClick={()=>{
-              inputRef6.current.click()
-            }}>
-              <CiCirclePlus />
-              <div>
-                {
-                  dataState.r6?
-                  <img className="image" src={dataState.r6} ref={ref}/>
-                  :
-                  null
-                }
-              </div>
-            </div>
-            <div className="aboutme-text-container">
-              <textarea onInput={(e)=>{setDataState({...dataState, t6:e.target.value})}} value={dataState.t6} placeholder="제목" rows="1" className="aboutme-text-title" maxLength="15"></textarea>
-              <textarea onInput={(e)=>{setDataState({...dataState, c6:e.target.value})}} value={dataState.c6} placeholder="내용" rows="1" className="aboutme-text" maxLength="30"></textarea>
-            </div>
-          </div>
+      
+      </div>
 
+
+      :
+
+
+      <div className="wrapper">
+        <button className="aboutme-save-btn" onClick={()=>{saveText()}}>저장</button>
+        <div className="uploadImage-btn-container">
+          <input ref={inputRef1} className="uploadImage-input" type="file"id="image_uploads"name="image_uploads"accept=".jpg, .jpeg, .png" onChange={(e)=>{uploadImage(e,"r1")}}/>
+        </div>
+        <div className="uploadImage-btn-container">
+          <input ref={inputRef2} className="uploadImage-input" type="file"id="image_uploads"name="image_uploads"accept=".jpg, .jpeg, .png" onChange={(e)=>{uploadImage(e,"r2")}}/>
+        </div>
+        <div className="uploadImage-btn-container">
+          <input ref={inputRef3} className="uploadImage-input" type="file"id="image_uploads"name="image_uploads"accept=".jpg, .jpeg, .png" onChange={(e)=>{uploadImage(e,"r3")}}/>
+        </div>
+        <div className="uploadImage-btn-container">
+          <input ref={inputRef4} className="uploadImage-input" type="file"id="image_uploads"name="image_uploads"accept=".jpg, .jpeg, .png" onChange={(e)=>{uploadImage(e,"r4")}}/>
+        </div>
+        <div className="uploadImage-btn-container">
+          <input ref={inputRef5} className="uploadImage-input" type="file"id="image_uploads"name="image_uploads"accept=".jpg, .jpeg, .png" onChange={(e)=>{uploadImage(e,"r5")}}/>
+        </div>
+        <div className="uploadImage-btn-container">
+          <input ref={inputRef6} className="uploadImage-input" type="file"id="image_uploads"name="image_uploads"accept=".jpg, .jpeg, .png" onChange={(e)=>{uploadImage(e,"r6")}}/>
+        </div>
+
+
+        <div className="aboutme-container">
+          <div className="aboutme-title">
+          <textarea onChange={(e)=>{setDataState({...dataState, tt1:e.target.value});}} value={dataState.tt1} placeholder="제목" rows="1" className="aboutme-text-title" maxLength="25"></textarea>
+          </div>
+          <div className="aboutme-content-container">
+            <div className="aboutme-content-item">
+              <div ref={inputBtnRef1} className="aboutme-image-upload-Btn" onClick={()=>{
+                inputRef1.current.click()
+              }}>
+                <CiCirclePlus />
+                <div>
+                  {
+                    dataState.r1?
+                    <img className="image" src={dataState.r1} ref={ref}/>
+                    :
+                    null
+                  }
+                </div>
+              </div>
+              <div className="aboutme-text-container">
+                <textarea onChange={(e)=>{setDataState({...dataState, t1:e.target.value});}} value={dataState.t1} placeholder="제목" rows="1" className="aboutme-text-title" maxLength="15"></textarea>
+                <textarea onInput={(e)=>{setDataState({...dataState, c1:e.target.value})}} value={dataState.c1} placeholder="내용" rows="1" className="aboutme-text" maxLength="30"></textarea>
+              </div>
+            </div>
+            <div className="aboutme-content-item">
+              <div ref={inputBtnRef2} className="aboutme-image-upload-Btn" onClick={()=>{
+                inputRef2.current.click()
+              }}>
+                <CiCirclePlus />
+                <div>
+                  {
+                    dataState.r2?
+                    <img className="image" src={dataState.r2} ref={ref}/>
+                    :
+                    null
+                  }
+                </div>
+              </div>
+              <div className="aboutme-text-container">
+                <textarea onInput={(e)=>{setDataState({...dataState, t2:e.target.value})}} value={dataState.t2} placeholder="제목" rows="1" className="aboutme-text-title" maxLength="15"></textarea>
+                <textarea onInput={(e)=>{setDataState({...dataState, c2:e.target.value})}} value={dataState.c2} placeholder="내용" rows="1" className="aboutme-text" maxLength="30"></textarea>
+              </div>
+            </div>
+            <div className="aboutme-content-item">
+              <div ref={inputBtnRef3} className="aboutme-image-upload-Btn" onClick={()=>{
+                inputRef3.current.click()
+              }}>
+                <CiCirclePlus />
+                <div>
+                  {
+                    dataState.r3?
+                    <img className="image" src={dataState.r3} ref={ref}/>
+                    :
+                    null
+                  }
+                </div>
+              </div>
+              <div className="aboutme-text-container">
+                <textarea onInput={(e)=>{setDataState({...dataState, t3:e.target.value})}} value={dataState.t3} placeholder="제목" rows="1" className="aboutme-text-title" maxLength="15"></textarea>
+                <textarea onInput={(e)=>{setDataState({...dataState, c3:e.target.value})}} value={dataState.c3} placeholder="내용" rows="1" className="aboutme-text" maxLength="30"></textarea>
+              </div>
+            </div>
+            <div className="aboutme-content-item">
+              <div ref={inputBtnRef4} className="aboutme-image-upload-Btn" onClick={()=>{
+                inputRef4.current.click()
+              }}>
+                <CiCirclePlus />
+                <div>
+                  {
+                    dataState.r4?
+                    <img className="image" src={dataState.r4} ref={ref}/>
+                    :
+                    null
+                  }
+                </div>
+              </div>
+              <div className="aboutme-text-container">
+                <textarea onInput={(e)=>{setDataState({...dataState, t4:e.target.value})}} value={dataState.t4} placeholder="제목" rows="1" className="aboutme-text-title" maxLength="15"></textarea>
+                <textarea onInput={(e)=>{setDataState({...dataState, c4:e.target.value})}} value={dataState.c4} placeholder="내용" rows="1" className="aboutme-text" maxLength="30"></textarea>
+              </div>
+            </div>
+            <div className="aboutme-content-item">
+              <div ref={inputBtnRef5} className="aboutme-image-upload-Btn" onClick={()=>{
+                inputRef5.current.click()
+              }}>
+                <CiCirclePlus />
+                <div>
+                  {
+                    dataState.r5?
+                    <img className="image" src={dataState.r5} ref={ref}/>
+                    :
+                    null
+                  }
+                </div>
+              </div>
+              <div className="aboutme-text-container">
+                <textarea onInput={(e)=>{setDataState({...dataState, t5:e.target.value})}} value={dataState.t5} placeholder="제목" rows="1" className="aboutme-text-title" maxLength="15"></textarea>
+                <textarea onInput={(e)=>{setDataState({...dataState, c5:e.target.value})}} value={dataState.c5} placeholder="내용" rows="1" className="aboutme-text" maxLength="30"></textarea>
+              </div>
+            </div>
+            <div className="aboutme-content-item">
+              <div ref={inputBtnRef6} className="aboutme-image-upload-Btn" onClick={()=>{
+                inputRef6.current.click()
+              }}>
+                <CiCirclePlus />
+                <div>
+                  {
+                    dataState.r6?
+                    <img className="image" src={dataState.r6} ref={ref}/>
+                    :
+                    null
+                  }
+                </div>
+              </div>
+              <div className="aboutme-text-container">
+                <textarea onInput={(e)=>{setDataState({...dataState, t6:e.target.value})}} value={dataState.t6} placeholder="제목" rows="1" className="aboutme-text-title" maxLength="15"></textarea>
+                <textarea onInput={(e)=>{setDataState({...dataState, c6:e.target.value})}} value={dataState.c6} placeholder="내용" rows="1" className="aboutme-text" maxLength="30"></textarea>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
       
-      </div>
+      }
     </>
   );
 });

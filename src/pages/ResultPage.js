@@ -17,6 +17,24 @@ import Scroll from "../components/Scroll.js";
 import Profile from "../components/Profile.js";
 import ColorPicker from "../components/ColorPicker.js";
 
+// 재현
+import AboutMe1 from "../components/AboutMe1.js";
+import AboutMe2 from "../components/AboutMe2.js";
+import AboutMe3 from "../components/AboutMe3.js";
+import Shape from "../components/Shape.js";
+
+// 민기
+import DoughnutChart from "../components/DoughnutChart.js";
+import Vcharts from "../components/Vcharts.js";
+import Hchart from "../components/Hchart.js";
+import Piechart from "../components/Piechart.js";
+import Tag from "../components/Tag.js";
+
+import TextBox from "../components/TextBox.js";
+import TextBox2 from "../components/TextBox2.js";
+import TextBox3 from "../components/TextBox3.js";
+import Bar from "../components/Bar.js";
+
 function ResultPage() {
   const location = useLocation();
   const dState = location.state;
@@ -24,7 +42,22 @@ function ResultPage() {
   let a=[1,2,3];
   useEffect(()=>{
     console.log(dStateList)
+    if(location.state.colorData.bgc && location.state.colorData.bgc[0] == "#"){
+      pageRef.current.style.backgroundColor = location.state.colorData.bgc;
+    }
+    else{
+      pageRef.current.style.backgroundImage = location.state.colorData.bgc;
+    }
+    let ta = document.getElementsByClassName("resultDiv");
+    if(ta.length !== 0){
+      ta = [...ta]
+      console.log(ta);
+      ta.forEach((it)=>{
+        it.style.color=location.state.colorData.dtc;
+      })
+    }
   },[])
+  
   // 영역 관리 state
   const [state, setState] = useState({[uuidv4()]: []})
   
@@ -40,165 +73,80 @@ function ResultPage() {
     let result ;
     switch (content) {
       case '이미지1':
-        return <ImageAdaptor id={id} dataList={dataList} setDataList={setDataList}/>;
+        return <ImageAdaptor result={true} id={id} dataList={dataList} setDataList={setDataList}/>;
     
       case '이미지2':
-        return <ThreeImage id={id} dataList={dataList} setDataList={setDataList}/>;
+        return <ThreeImage result={true} id={id} dataList={dataList} setDataList={setDataList}/>;
 
+      case '프로필1':
+        return <Profile result={true} id={id} dataList={dataList} setDataList={setDataList}/>;
+
+      case '프로필2':
+        return <AboutMe3 result={true} id={id} dataList={dataList} setDataList={setDataList}/>;
+  
       case '도형1':
-        return <Profile id={id} dataList={dataList} setDataList={setDataList}/>;
+        return <Scroll result={true} id={id} dataList={dataList} setDataList={setDataList}/>;
       
       case '도형2':
-        return <Scroll id={id} dataList={dataList} setDataList={setDataList}/>;
-      
+        return <AboutMe result={true} id={id} dataList={dataList} setDataList={setDataList}/>;
+    
       case '도형3':
-        return <AboutMe id={id} dataList={dataList} setDataList={setDataList}/>;
+        return <Tag result={true} id={id} dataList={dataList} setDataList={setDataList}/>;
+    
+      case '도형4':
+        return <Bar result={true} id={id} dataList={dataList} setDataList={setDataList}/>;
 
+
+      case '글상자1':
+        return <AboutMe1 result={true} id={id} dataList={dataList} setDataList={setDataList}/>;
+      
+      case '글상자2':
+        return <AboutMe2 result={true} id={id} dataList={dataList} setDataList={setDataList}/>;
+      
+      case '글상자3':
+        return <TextBox result={true} id={id} dataList={dataList} setDataList={setDataList}/>;
+        
+      case '글상자4':
+        return <TextBox2 result={true} id={id} dataList={dataList} setDataList={setDataList}/>;
+      
+      case '글상자5':
+        return <TextBox3 result={true} id={id} dataList={dataList} setDataList={setDataList}/>;
+        case '그래프1':
+          return <DoughnutChart result={true} id={id} dataList={dataList} setDataList={setDataList}/>;
+          
+      case '그래프2':
+        return <Piechart result={true} id={id} dataList={dataList} setDataList={setDataList}/>;
+        
+        case '그래프3':
+        return <Hchart result={true} id={id} dataList={dataList} setDataList={setDataList}/>;
+      
+      case '그래프4':
+        return <Vcharts result={true} id={id} dataList={dataList} setDataList={setDataList}/>;
+      
+      case '연대기1':
+        return <Shape result={true} id={id} dataList={dataList} setDataList={setDataList}/>;
+        
       default:
         return <div>HELL</div>;
     }
   }
   
-  // 식별자 리스트
-  const ITEMS = [
-    {
-        id: uuidv4(),
-        title: "프로필",
-        content: '도형1',
-    },
-    {
-        id: uuidv4(),
-        title: '액티브 슬라이드',
-        content: '도형2',
-    },
-    {
-        id: uuidv4(),
-        title: 'About Me',
-        content: '도형3',
-    },
-  ];
-  const ITEMS2 = [
-      {
-          id: uuidv4(),
-          title: '글상자1',
-          content: '글상자1',
-      },
-      {
-          id: uuidv4(),
-          title: '글상자2',
-          content: '글상자2',
-      },
-      {
-          id: uuidv4(),
-          title: '글상자3',
-          content: '글상자3',
-      },
-      {
-          id: uuidv4(),
-          title: '글상자4',
-          content: '글상자4',
-      },
-      {
-          id: uuidv4(),
-          title: '글상자5',
-          content: '글상자5',
-      },
-  ];
-  const ITEMS3 = [
-      {
-          id: uuidv4(),
-          title: '배너 이미지',
-          content: '이미지1',
-      },
-      {
-          id: uuidv4(),
-          title: '3-set 이미지',
-          content: '이미지2',
-      },
-      {
-          id: uuidv4(),
-          title: '이미지3',
-          content: '이미지3',
-      },
-      {
-          id: uuidv4(),
-          title: '이미지4',
-          content: '이미지4',
-      },
-      {
-          id: uuidv4(),
-          title: '이미지5',
-          content: '이미지5',
-      },
-  ];
-  const ITEMS4 = [
-      {
-          id: uuidv4(),
-          title: '그래프1',
-          content: '그래프1',
-      },
-      {
-          id: uuidv4(),
-          title: '그래프2',
-          content: '그래프2',
-      },
-      {
-          id: uuidv4(),
-          title: '그래프3',
-          content: '그래프3',
-      },
-      {
-          id: uuidv4(),
-          title: '그래프4',
-          content: '그래프4',
-      },
-      {
-          id: uuidv4(),
-          title: '그래프5',
-          content: '그래프5',
-      },
-  ];
-  const ITEMS5 = [
-      {
-          id: uuidv4(),
-          title: '연대기1',
-          content: '연대기1',
-      },
-      {
-          id: uuidv4(),
-          title: '연대기2',
-          content: '연대기2',
-      },
-      {
-          id: uuidv4(),
-          title: '연대기3',
-          content: '연대기3',
-      },
-      {
-          id: uuidv4(),
-          title: '연대기4',
-          content: '연대기4',
-      },
-      {
-          id: uuidv4(),
-          title: '연대기5',
-          content: '연대기5',
-      },
-  ];
-  
+  let pageRef = useRef();
   return (
     <>
-    <div className="HLELO">
-    {
-      dStateList ?
-        dStateList.map((item, idx)=>(
-          dState.stateList[item].map((it, i)=>(
-            createBlock(it.content, it.id)
-          ))
-        ))
-      :
-        <div>dfjk</div>
-    }
+    <div ref={pageRef} className="result-page-container bgr">
+      <div className="result-page-wrapper">
+        {
+          dStateList ?
+            dStateList.map((item, idx)=>(
+              dState.stateList[item].map((it, i)=>(
+                createBlock(it.content, it.id)
+              ))
+            ))
+          :
+            <div>dfjk</div>
+        }
+      </div>
     </div>
     </>
   );

@@ -7,6 +7,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { BiLeftArrow, BiCube, BiCommentDetail, BiImageAdd } from "react-icons/bi";
 import { GoGraph } from "react-icons/go";
 import { PiFrameCornersBold, PiFlowArrowFill } from "react-icons/pi";
+import { ImProfile } from "react-icons/im";
 import { SketchPicker } from 'react-color';
 import { Sketch } from "@uiw/react-color";
 
@@ -17,6 +18,27 @@ import Scroll from "../components/Scroll.js";
 import Profile from "../components/Profile.js";
 import ColorPicker from "../components/ColorPicker.js";
 
+// 재현
+import AboutMe1 from "../components/AboutMe1.js";
+import AboutMe2 from "../components/AboutMe2.js";
+import AboutMe3 from "../components/AboutMe3.js";
+import Shape from "../components/Shape.js";
+
+// 민기
+import DoughnutChart from "../components/DoughnutChart.js";
+import Vcharts from "../components/Vcharts.js";
+import Hchart from "../components/Hchart.js";
+import Piechart from "../components/Piechart.js";
+import Tag from "../components/Tag.js";
+
+import TextBox from "../components/TextBox.js";
+import TextBox2 from "../components/TextBox2.js";
+import TextBox3 from "../components/TextBox3.js";
+import Bar from "../components/Bar.js";
+
+
+
+
 function EditPage() {
   // navigator
   let navigator = useNavigate();
@@ -26,9 +48,13 @@ function EditPage() {
   // 블록 별 {id, data}
   const [dataList, setDataList] = useState([]);
 
+  // 배경색, 기본글자색
+  const [colorData, setColorData] = useState({});
+
   // 렌더링 시 return할 블록 {id, content}
   const [blockList, setBlockList] = useState([]);
   
+
 
   // 블록 렌더링 함수 (content로 식별)
   let createBlock = (content, id)=>{
@@ -40,19 +66,60 @@ function EditPage() {
       case '이미지2':
         return <ThreeImage id={id} dataList={dataList} setDataList={setDataList}/>;
 
-      case '도형1':
+      case '프로필1':
         return <Profile id={id} dataList={dataList} setDataList={setDataList}/>;
       
-      case '도형2':
+      case '프로필2':
+        return <AboutMe3 id={id} dataList={dataList} setDataList={setDataList}/>;
+
+      case '도형1':
         return <Scroll id={id} dataList={dataList} setDataList={setDataList}/>;
       
-      case '도형3':
+      case '도형2':
         return <AboutMe id={id} dataList={dataList} setDataList={setDataList}/>;
+      
+      case '도형3':
+        return <Tag id={id} dataList={dataList} setDataList={setDataList}/>;
 
+      case '도형4':
+        return <Bar id={id} dataList={dataList} setDataList={setDataList}/>;
+
+
+      case '글상자1':
+        return <AboutMe1 id={id} dataList={dataList} setDataList={setDataList}/>;
+      
+      case '글상자2':
+        return <AboutMe2 id={id} dataList={dataList} setDataList={setDataList}/>;
+      
+      case '글상자3':
+        return <TextBox id={id} dataList={dataList} setDataList={setDataList}/>;
+      
+      case '글상자4':
+        return <TextBox2 id={id} dataList={dataList} setDataList={setDataList}/>;
+      
+      case '글상자5':
+        return <TextBox3 id={id} dataList={dataList} setDataList={setDataList}/>;
+      
+      case '그래프1':
+        return <DoughnutChart id={id} dataList={dataList} setDataList={setDataList}/>;
+      
+      case '그래프2':
+        return <Piechart id={id} dataList={dataList} setDataList={setDataList}/>;
         
+        case '그래프3':
+        return <Hchart id={id} dataList={dataList} setDataList={setDataList}/>;
+      
+      case '그래프4':
+        return <Vcharts id={id} dataList={dataList} setDataList={setDataList}/>;
+      
+      case '연대기1':
+        return <Shape id={id} dataList={dataList} setDataList={setDataList}/>;
+      
+
+      
       
       default:
-        return <div>HELL</div>;
+        return <div>HELL</div>
     }
   }
   // 순서정렬
@@ -213,127 +280,104 @@ function EditPage() {
   // 식별자 리스트
   const ITEMS = [
     {
-        id: uuidv4(),
-        title: "프로필",
-        content: '도형1',
+      id: uuidv4(),
+      title: '액티브 슬라이드',
+      content: '도형1',
     },
     {
-        id: uuidv4(),
-        title: '액티브 슬라이드',
-        content: '도형2',
+      id: uuidv4(),
+      title: 'About Me',
+      content: '도형2',
     },
     {
-        id: uuidv4(),
-        title: 'About Me',
-        content: '도형3',
+      id: uuidv4(),
+      title: '태그',
+      content: '도형3',
+    },
+    {
+      id: uuidv4(),
+      title: '구분선',
+      content: '도형4',
+    },
+  ];
+  const ITEMS1 = [
+    {
+      id: uuidv4(),
+      title: "프로필1",
+      content: '프로필1',
+    },
+    {
+      id: uuidv4(),
+      title: "프로필2",
+      content: '프로필2',
     },
   ];
   const ITEMS2 = [
       {
-          id: uuidv4(),
-          title: '글상자1',
-          content: '글상자1',
+        id: uuidv4(),
+        title: '타이틀1',
+        content: '글상자1',
       },
       {
-          id: uuidv4(),
-          title: '글상자2',
-          content: '글상자2',
+        id: uuidv4(),
+        title: '타이틀2',
+        content: '글상자2',
       },
       {
-          id: uuidv4(),
-          title: '글상자3',
-          content: '글상자3',
+        id: uuidv4(),
+        title: '소제목1',
+        content: '글상자3',
       },
       {
-          id: uuidv4(),
-          title: '글상자4',
-          content: '글상자4',
+        id: uuidv4(),
+        title: '소제목2',
+        content: '글상자4',
       },
       {
-          id: uuidv4(),
-          title: '글상자5',
-          content: '글상자5',
+        id: uuidv4(),
+        title: '글상자',
+        content: '글상자5',
       },
   ];
   const ITEMS3 = [
       {
-          id: uuidv4(),
-          title: '배너 이미지',
-          content: '이미지1',
+        id: uuidv4(),
+        title: '배너 이미지',
+        content: '이미지1',
       },
       {
-          id: uuidv4(),
-          title: '3-set 이미지',
-          content: '이미지2',
-      },
-      {
-          id: uuidv4(),
-          title: '이미지3',
-          content: '이미지3',
-      },
-      {
-          id: uuidv4(),
-          title: '이미지4',
-          content: '이미지4',
-      },
-      {
-          id: uuidv4(),
-          title: '이미지5',
-          content: '이미지5',
+        id: uuidv4(),
+        title: '3-set 이미지',
+        content: '이미지2',
       },
   ];
   const ITEMS4 = [
       {
-          id: uuidv4(),
-          title: '그래프1',
-          content: '그래프1',
+        id: uuidv4(),
+        title: '도넛 차트',
+        content: '그래프1',
       },
       {
-          id: uuidv4(),
-          title: '그래프2',
-          content: '그래프2',
+        id: uuidv4(),
+        title: '파이 차트',
+        content: '그래프2',
       },
       {
-          id: uuidv4(),
-          title: '그래프3',
-          content: '그래프3',
+        id: uuidv4(),
+        title: '막대 차트(가로)',
+        content: '그래프3',
       },
       {
-          id: uuidv4(),
-          title: '그래프4',
-          content: '그래프4',
-      },
-      {
-          id: uuidv4(),
-          title: '그래프5',
-          content: '그래프5',
+        id: uuidv4(),
+        title: '막대 차트(세로)',
+        content: '그래프4',
       },
   ];
   const ITEMS5 = [
       {
-          id: uuidv4(),
-          title: '연대기1',
-          content: '연대기1',
-      },
-      {
-          id: uuidv4(),
-          title: '연대기2',
-          content: '연대기2',
-      },
-      {
-          id: uuidv4(),
-          title: '연대기3',
-          content: '연대기3',
-      },
-      {
-          id: uuidv4(),
-          title: '연대기4',
-          content: '연대기4',
-      },
-      {
-          id: uuidv4(),
-          title: '연대기5',
-          content: '연대기5',
+        id: uuidv4(),
+        title: '연대기',
+        content: '연대기1',
       },
   ];
 
@@ -428,18 +472,22 @@ function EditPage() {
         break;
       
       case 2:
-        setKioItem(ITEMS2);
+        setKioItem(ITEMS1);
         break;
       
       case 3:
-        setKioItem(ITEMS3);
+        setKioItem(ITEMS2);
         break;
       
       case 4:
+        setKioItem(ITEMS3);
+        break;
+      
+      case 5:
         setKioItem(ITEMS4);
         break;
 
-      case 5:
+      case 6:
         setKioItem(ITEMS5);
         break;
     
@@ -468,7 +516,12 @@ function EditPage() {
   const resRef = useRef([]);
   const [bgColor, setBgColor] = useState('#fff');
   useEffect(()=>{
-    bgRef.current.style.backgroundColor = bgColor;
+    if(bgColor[0]=="#"){ bgRef.current.style.background = bgColor;}
+    else{
+      bgRef.current.style.background = ''
+      bgRef.current.style.backgroundImage = bgColor;
+    }
+    setColorData({...colorData, bgc:bgColor});
   },[bgColor])
   const bgRef = useRef();
   const bgCtlRef = useRef();
@@ -476,6 +529,7 @@ function EditPage() {
   
   const [textColor, setTextColor] = useState('#000');
   useEffect(()=>{
+    setColorData({...colorData, dtc:textColor});
   },[textColor])
   useEffect(()=>{
     let ta = document.getElementsByTagName("textarea");
@@ -487,6 +541,33 @@ function EditPage() {
       })
     }
   })
+
+  let bgGrRef = useRef([]);
+  
+
+  let bgGrList = [
+    "linear-gradient(157deg, #25c139, #f55316, #4774ff)",
+    "linear-gradient(157deg, #8360c3, #2ebf91)",
+    "linear-gradient(157deg, #434343 0%, black 100%)",
+    "linear-gradient(157deg, #0f0c29, #302b63, #24243e)",
+    "linear-gradient(157deg, #870000, #190a05)",
+    "radial-gradient(circle farthest-side, #fceabb, #f8b500)",
+    "linear-gradient(157deg, rgb(242, 112, 156), rgb(255, 148, 114))",
+    "linear-gradient( 109.6deg, rgba(156,252,248,1) 11.2%, rgba(110,123,251,1) 91.1% )",
+    "radial-gradient( circle farthest-corner at 22.4% 21.7%, rgba(4,189,228,1) 0%, rgba(2,83,185,1) 100.2% )",
+    "linear-gradient(157deg, #ff512f, #f09819)",
+    "linear-gradient(157deg, #5a3f37, #2c7744)",
+    "linear-gradient(157deg, #2c3e50, #4ca1af)",
+    "linear-gradient(157deg, #141e30, #243b55)",
+    "linear-gradient(152deg, #9e67d4, #8fb5ea, #3755b4)",
+    "linear-gradient(152deg, #1c9963, #3f8573, #0b5643)",
+    "linear-gradient(152deg, #e63a94, #ffbfd5, #f3547d)",
+  ]  
+  let setBgGr = (idx)=>{
+    setBgColor(bgGrList[idx]);
+  }
+
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div className='category-container'>
@@ -498,31 +579,37 @@ function EditPage() {
           </div>
         </div>
         <div className="category-item-container">
+          <div className='category-item' ref={(el)=>{categoryBtnRef.current[2]=el}} onClick={()=>{flip(2)}}>
+            <div className='category-item-front'><ImProfile/></div>
+            <div className='category-item-back'><p>프로필</p></div>
+          </div>
+        </div>
+        <div className="category-item-container">
           <div className='category-item' ref={(el)=>{categoryBtnRef.current[1]=el}} onClick={()=>{flip(1)}}>
             <div className='category-item-front'><BiCube/></div>
             <div className='category-item-back'><p>도형</p></div>
           </div>
         </div>
         <div className="category-item-container">
-          <div className='category-item' ref={(el)=>{categoryBtnRef.current[2]=el}} onClick={()=>{flip(2)}}>
+          <div className='category-item' ref={(el)=>{categoryBtnRef.current[3]=el}} onClick={()=>{flip(3)}}>
             <div className='category-item-front'><BiCommentDetail/></div>
             <div className='category-item-back'><p>글상자</p></div>
           </div>
         </div>
         <div className="category-item-container">
-          <div className='category-item' ref={(el)=>{categoryBtnRef.current[3]=el}} onClick={()=>{flip(3)}}>
+          <div className='category-item' ref={(el)=>{categoryBtnRef.current[4]=el}} onClick={()=>{flip(4)}}>
             <div className='category-item-front'><BiImageAdd/></div>
             <div className='category-item-back'><p>이미지</p></div>
           </div>
         </div>
         <div className="category-item-container">
-          <div className='category-item' ref={(el)=>{categoryBtnRef.current[4]=el}} onClick={()=>{flip(4)}}>
+          <div className='category-item' ref={(el)=>{categoryBtnRef.current[5]=el}} onClick={()=>{flip(5)}}>
             <div className='category-item-front'><GoGraph/></div>
             <div className='category-item-back'><p>그래프</p></div>
           </div>
         </div>
         <div className="category-item-container">
-          <div className='category-item' ref={(el)=>{categoryBtnRef.current[5]=el}} onClick={()=>{flip(5)}}>
+          <div className='category-item' ref={(el)=>{categoryBtnRef.current[6]=el}} onClick={()=>{flip(6)}}>
             <div className='category-item-front'><PiFlowArrowFill/></div>
             <div className='category-item-back'><p>연대기</p></div>
           </div>
@@ -539,6 +626,24 @@ function EditPage() {
             <div ref={bgCtlRef} className="bg-controller">
               <div className="bg-controller-content">
                 <ColorPicker title={"배경 색"} color={bgColor} setColor={setBgColor}/>
+                <div className="gradient-container">
+                  <div ref={el=>bgGrRef.current[0]=el} onClick={()=>{setBgGr(0)}} className="gradient-item"></div>
+                  <div ref={el=>bgGrRef.current[1]=el} onClick={()=>{setBgGr(1)}} className="gradient-item"></div>
+                  <div ref={el=>bgGrRef.current[2]=el} onClick={()=>{setBgGr(2)}} className="gradient-item"></div>
+                  <div ref={el=>bgGrRef.current[3]=el} onClick={()=>{setBgGr(3)}} className="gradient-item"></div>
+                  <div ref={el=>bgGrRef.current[4]=el} onClick={()=>{setBgGr(4)}} className="gradient-item"></div>
+                  <div ref={el=>bgGrRef.current[5]=el} onClick={()=>{setBgGr(5)}} className="gradient-item"></div>
+                  <div ref={el=>bgGrRef.current[6]=el} onClick={()=>{setBgGr(6)}} className="gradient-item"></div>
+                  <div ref={el=>bgGrRef.current[7]=el} onClick={()=>{setBgGr(7)}} className="gradient-item"></div>
+                  <div ref={el=>bgGrRef.current[8]=el} onClick={()=>{setBgGr(8)}} className="gradient-item"></div>
+                  <div ref={el=>bgGrRef.current[9]=el} onClick={()=>{setBgGr(9)}} className="gradient-item"></div>
+                  <div ref={el=>bgGrRef.current[10]=el} onClick={()=>{setBgGr(10)}} className="gradient-item"></div>
+                  <div ref={el=>bgGrRef.current[11]=el} onClick={()=>{setBgGr(11)}} className="gradient-item"></div>
+                  <div ref={el=>bgGrRef.current[12]=el} onClick={()=>{setBgGr(12)}} className="gradient-item"></div>
+                  <div ref={el=>bgGrRef.current[13]=el} onClick={()=>{setBgGr(13)}} className="gradient-item"></div>
+                  <div ref={el=>bgGrRef.current[14]=el} onClick={()=>{setBgGr(14)}} className="gradient-item"></div>
+                  <div ref={el=>bgGrRef.current[15]=el} onClick={()=>{setBgGr(15)}} className="gradient-item"></div>
+                </div>
               </div>
               <div className="bg-controller-content">
                 <ColorPicker title={"기본 글자 색"} color={textColor} setColor={setTextColor}/>
@@ -584,7 +689,7 @@ function EditPage() {
           </Kiosk>
         )}
       </Droppable>
-      <div ref={bgRef} className="bg">
+      <div ref={bgRef} className="bg bgr">
       <Content>
       <Button onClick={addList}>
         <svg width="24" height="24" viewBox="0 0 24 24">
@@ -595,7 +700,7 @@ function EditPage() {
         </svg>
         <ButtonText>구역 생성</ButtonText>
       </Button>
-      <Button2 onClick={()=>{navigator("./result", {state: {dataList:dataList, stateList: state}})}}>
+      <Button2 onClick={()=>{navigator("./ready", {state: {dataList:dataList, stateList: state, colorData: colorData}})}}>
         <ButtonText>구역 생성</ButtonText>
       </Button2>
       

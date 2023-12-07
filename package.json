@@ -10,6 +10,7 @@
     "@uiw/react-color-saturation": "^2.0.3",
     "filereader": "^0.10.3",
     "react": "^18.2.0",
+    "chart.js": "^4.4.0",
     "react-beautiful-dnd": "^13.1.1",
     "react-color": "^2.19.3",
     "react-dom": "^18.2.0",
@@ -19,7 +20,8 @@
     "styled-component": "^2.8.0",
     "styled-components": "^6.1.1",
     "uuid": "^9.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "react-chartjs-2": "^5.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -30,29 +30,53 @@ const ImageAdaptor = forwardRef( (props, ref)=>{
   let inputBtnRef = useRef();
   return(
     <>
-    <div className="wrapper">
-      <div className="uploadImage-btn-container">
-        {/* <label htmlFor="image_uploads">버튼</label> */}
-        <input ref={inputRef} className="uploadImage-input" type="file"
-        id="image_uploads"
-        name="image_uploads"
-        accept=".jpg, .jpeg, .png" onChange={(e)=>{uploadImage(e)}}/>
-      </div>
-      <div ref={inputBtnRef} className="image-upload-Btn" onClick={()=>{
-        inputRef.current.click()
-      }}>
-        <CiCirclePlus />
-        <div>
-          {
-            imageURLState?
-            <img className="image" src={imageURLState} ref={ref}/>
-            :
-            null
-          }
+    {
+      props.result ? 
+        <div className="wrapper">
+          <div ref={inputBtnRef} className="image-upload-Btn banner-result">
+            <div>
+              {
+                imageURLState?
+                <img className="image" src={imageURLState} ref={ref}/>
+                :
+                null
+              }
+            </div>
+          </div>
+          
         </div>
+
+
+      :
+
+
+
+      <div className="wrapper">
+        <div className="uploadImage-btn-container">
+          {/* <label htmlFor="image_uploads">버튼</label> */}
+          <input ref={inputRef} className="uploadImage-input" type="file"
+          id="image_uploads"
+          name="image_uploads"
+          accept=".jpg, .jpeg, .png" onChange={(e)=>{uploadImage(e)}}/>
+        </div>
+        <div ref={inputBtnRef} className="image-upload-Btn" onClick={()=>{
+          inputRef.current.click()
+        }}>
+          <CiCirclePlus />
+          <div>
+            {
+              imageURLState?
+              <img className="image" src={imageURLState} ref={ref}/>
+              :
+              null
+            }
+          </div>
+        </div>
+        
       </div>
-      
-      </div>
+    }
+
+
     </>
   );
 });
