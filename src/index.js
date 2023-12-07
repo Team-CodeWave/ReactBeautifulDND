@@ -6,7 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
 
-axios.get('http://localhost:3000/api/data')
+axios.get('http://15.165.169.206:3000/api/data')
   .then(response => {
     console.log('Request Successful', response);
   })

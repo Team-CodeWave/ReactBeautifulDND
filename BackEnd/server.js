@@ -11,7 +11,7 @@ const axios = require('axios');
 
 app.use(cors());
 
-axios.get('http://localhost:3000/api/DND')
+axios.get('http://15.165.169.206:3000/api/DND')
   .then(response => {
     // 응답 데이터 처리
     console.log(response.data);
@@ -38,7 +38,7 @@ app.get('/api/data', (req, res) => {
 
 // 서버 시작
 app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+  console.log(`Server is running at http://15.165.169.206:${port}`);
 
   // React 앱 실행
   exec('npm run build && npm start', {
@@ -52,5 +52,5 @@ app.listen(port, () => {
   });
 
   const open = require('open');
-  open(`http://localhost:${port}`);
+  open(`http://15.165.169.206:${port}`);
 });
