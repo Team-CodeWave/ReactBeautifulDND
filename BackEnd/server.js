@@ -36,11 +36,16 @@ app.get('/api/data', (req, res) => {
   res.send('REST API Request data');
 });
 
+// 모든 요청에 대해 index.html을 제공
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
+});
+
 // 서버 시작
 app.listen(port, () => {
   console.log(`Server is running at http://15.165.169.206:${port}`);
-
-  // React 앱 실행
+/*
+  // React 앱 실행 localhost 전용
   exec('npm run build && npm start', {
     cwd: path.join(__dirname, '../src') // React 프로젝트의 경로로 설정
   }, (error, stdout, stderr) => {
@@ -53,4 +58,5 @@ app.listen(port, () => {
 
   const open = require('open');
   open(`http://15.165.169.206:${port}`);
+*/
 });
